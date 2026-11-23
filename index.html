@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jejak Trem yang Hilang</title>
+
+<style>
+
+/* =========================
+   PENGATURAN DASAR
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 75px;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #e8d3ad;
+    color: #302b1c;
+}
+
+/* =========================
+   HEADER / HALAMAN PEMBUKA
+========================= */
+
+header {
+    background:
+        linear-gradient(
+            rgba(35,35,22,.80),
+            rgba(35,35,22,.88)
+        ),
+        url("sampulstorymaps.png");
+
+    background-size: cover;
+    background-position: center;
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 60px 20px;
+    color: #f5e6c5;
+}
+
+.header-content {
+    max-width: 850px;
+}
+
+.header-label {
+    font-family: Arial, sans-serif;
+    letter-spacing: 4px;
+    font-size: 13px;
+    color: #d7b77e;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    font-size: clamp(42px, 7vw, 78px);
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 5px #000;
+}
+
+header h3 {
+    font-size: 23px;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 650px;
+    margin: auto;
+    color: #e9dabb;
+}
+
+/* TOMBOL HEADER */
+
+.header-buttons {
+    margin-top: 35px;
+}
+
+.header-buttons a {
+    display: inline-block;
+    padding: 14px 25px;
+    margin: 7px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    border: 1px solid #d5b477;
+    transition: .3s;
+}
+
+.btn-main {
+    background: #d5b477;
+    color: #302b1c;
+}
+
+.btn-outline {
+    color: #f5e6c5;
+}
+
+.header-buttons a:hover {
+    background: #80572d;
+    color: white;
+}
+
+/* =========================
+   NAVIGASI
+========================= */
+
+nav {
+    background: #302d1d;
+    padding: 18px 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    box-shadow: 0 4px 12px #0003;
+}
+
+nav a {
+    color: #f4e6c8;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #d5a75e;
+}
+
+/* =========================
+   BAGIAN KONTEN
+========================= */
+
+section {
+    padding: 75px 8%;
+    text-align: center;
+}
+
+.section-label {
+    color: #9a542d;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    color: #48452c;
+    font-size: clamp(29px, 4vw, 42px);
+    margin-bottom: 18px;
+}
+
+.section-desc {
+    max-width: 760px;
+    margin: 0 auto 35px;
+    line-height: 1.8;
+    font-size: 16px;
+    color: #66563d;
+}
+
+/* =========================
+   INFOGRAFIS
+========================= */
+
+#infografis {
+    background:
+        radial-gradient(
+            circle,
+            #f1e2c2,
+            #e8d3ad
+        );
+}
+
+.infografis-container {
+    max-width: 850px;
+    margin: auto;
+
+    background: #f5e8ce;
+    padding: 18px;
+
+    border: 5px solid #72502d;
+
+    box-shadow:
+        0 8px 20px #60401e44,
+        inset 0 0 0 2px #c5a77b;
+}
+
+.infografis-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+    transition: .3s;
+}
+
+.infografis-container img:hover {
+    opacity: .93;
+}
+
+.image-caption {
+    font-size: 13px;
+    font-style: italic;
+    color: #796548;
+    margin-top: 15px;
+}
+
+/* =========================
+   BAGIAN STORYMAPS
+========================= */
+
+#storymap {
+    background: #d6c19a;
+}
+
+.story-card {
+    max-width: 900px;
+    margin: auto;
+
+    background: #f5e8ce;
+    padding: 25px;
+
+    border: 3px solid #72502d;
+
+    box-shadow: 0 8px 20px #60401e33;
+}
+
+.story-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-bottom: 25px;
+}
+
+.story-card h3 {
+    color: #48452c;
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.story-card p {
+    line-height: 1.8;
+    color: #66563d;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* TOMBOL STORYMAPS */
+
+.story-button {
+    display: inline-block;
+
+    background: #48452c;
+    color: #fff0d1;
+
+    padding: 16px 30px;
+    margin-top: 25px;
+
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    border-radius: 4px;
+    transition: .3s;
+}
+
+.story-button:hover {
+    background: #79532d;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px #0003;
+}
+
+/* =========================
+   BAGIAN PENUTUP
+========================= */
+
+.closing {
+    background: #e8d3ad;
+    padding: 55px 20px;
+    text-align: center;
+}
+
+.closing h2 {
+    color: #48452c;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.closing p {
+    color: #66563d;
+    line-height: 1.8;
+    max-width: 650px;
+    margin: auto;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #302d1d;
+    color: #e9d9b8;
+    text-align: center;
+
+    padding: 32px 15px;
+
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+footer h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+/* =========================
+   FITUR PERBESAR INFOGRAFIS
+========================= */
+
+#lightbox {
+    display: none;
+
+    position: fixed;
+    z-index: 100;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.94);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    cursor: zoom-out;
+}
+
+#lightbox.active {
+    display: flex;
+}
+
+#lightbox img {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 38px;
+}
+
+/* =========================
+   TAMPILAN HP
+========================= */
+
+@media(max-width: 600px) {
+
+    header {
+        min-height: 480px;
+    }
+
+    header h3 {
+        font-size: 19px;
+    }
+
+    nav {
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+
+    section {
+        padding: 50px 5%;
+    }
+
+    .story-card {
+        padding: 13px;
+    }
+
+    .story-image {
+        height: 220px;
+    }
+
+    .header-buttons a {
+        font-size: 11px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HALAMAN PEMBUKA
+========================= -->
+
+<header id="beranda">
+
+    <div class="header-content">
+
+        <div class="header-label">
+            ARSIP SEJARAH TRANSPORTASI
+        </div>
+
+        <h1>
+            Jejak Trem<br>
+            yang Hilang
+        </h1>
+
+        <h3>
+            Jalur Yogyakarta–Brosot (1895–1976)
+        </h3>
+
+        <p>
+            Menelusuri sejarah transportasi dan perubahan
+            ruang di Yogyakarta–Bantul melalui dokumentasi
+            visual, infografis, dan peta cerita digital.
+        </p>
+
+        <div class="header-buttons">
+
+            <a href="#infografis" class="btn-main">
+                LIHAT INFOGRAFIS
+            </a>
+
+            <a href="#storymap" class="btn-outline">
+                JELAJAHI STORYMAPS
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     NAVIGASI WEBSITE
+========================= -->
+
+<nav>
+
+    <a href="#beranda">BERANDA</a>
+
+    <a href="#infografis">INFOGRAFIS</a>
+
+    <a href="#storymap">STORYMAPS</a>
+
+    <a href="#tentang">TENTANG</a>
+
+</nav>
+
+
+<!-- =========================
+     BAGIAN INFOGRAFIS
+========================= -->
+
+<section id="infografis">
+
+    <div class="section-label">
+        DOKUMENTASI VISUAL
+    </div>
+
+    <h2 class="section-title">
+        Infografis Sejarah Jalur Trem
+    </h2>
+
+    <p class="section-desc">
+
+        Kenali perjalanan sejarah jalur trem
+        Yogyakarta–Brosot melalui infografis yang
+        menyajikan latar belakang pembangunan,
+        perkembangan jalur, persebaran stasiun,
+        serta jejak sejarah yang masih tertinggal.
+
+    </p>
+
+    <div class="infografis-container">
+
+        <img
+            src="infografis.png"
+            alt="Infografis Jejak Trem yang Hilang"
+            onclick="openImage(this.src)"
+        >
+
+        <div class="image-caption">
+            Infografis Jejak Trem yang Hilang
+            | Yogyakarta–Brosot (1895–1976)
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN STORYMAPS
+========================= -->
+
+<section id="storymap">
+
+    <div class="section-label">
+        EKSPLORASI DIGITAL
+    </div>
+
+    <h2 class="section-title">
+        Jelajahi ArcGIS StoryMaps
+    </h2>
+
+    <p class="section-desc">
+
+        Telusuri sejarah jalur trem Yogyakarta–Brosot
+        secara lebih mendalam melalui ArcGIS StoryMaps.
+        Jelajahi dokumentasi sejarah dan informasi
+        spasial dalam satu perjalanan digital.
+
+    </p>
+
+    <div class="story-card">
+
+        <img
+            src="sampulstorymaps.png"
+            alt="Sampul StoryMaps Jejak Trem yang Hilang"
+            class="story-image"
+        >
+
+        <h3>
+            Jejak Trem yang Hilang
+        </h3>
+
+        <p>
+
+            Jalur Yogyakarta–Brosot (1895–1976)
+
+            <br>
+
+            Sebuah eksplorasi sejarah transportasi
+            dan perubahan ruang di wilayah
+            Yogyakarta–Bantul.
+
+        </p>
+
+        <a
+            href="https://arcg.is/1jbmDi5"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="story-button"
+        >
+            BUKA ARCGIS STORYMAPS ↗
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BAGIAN TENTANG
+========================= -->
+
+<section class="closing" id="tentang">
+
+    <div class="section-label">
+        TENTANG PROYEK
+    </div>
+
+    <h2>
+        Jejak Sejarah yang Tersisa
+    </h2>
+
+    <p>
+
+        Website ini mengintegrasikan infografis dan
+        ArcGIS StoryMaps sebagai media penyampaian
+        informasi mengenai sejarah jalur trem
+        Yogyakarta–Brosot.
+
+        <br><br>
+
+        Melalui dokumentasi digital, sejarah transportasi
+        masa lalu dapat dikenali dan dipelajari kembali.
+
+    </p>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h3>JEJAK TREM YANG HILANG</h3>
+
+    <p>
+        Jalur Yogyakarta–Brosot (1895–1976)
+    </p>
+
+    <p>
+        Dokumentasi Sejarah Transportasi
+        dan Perubahan Ruang
+    </p>
+
+    <p style="margin-top:12px;">
+        © 2026 | Kelompok 5
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     PREVIEW INFOGRAFIS
+========================= -->
+
+<div id="lightbox" onclick="closeImage()">
+
+    <span class="close-button">&times;</span>
+
+    <img
+        id="previewImage"
+        src=""
+        alt="Infografis ukuran besar"
+    >
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function openImage(src) {
+
+    document.getElementById("previewImage").src = src;
+
+    document.getElementById("lightbox")
+        .classList.add("active");
+
+}
+
+function closeImage() {
+
+    document.getElementById("lightbox")
+        .classList.remove("active");
+
+}
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeImage();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
